@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { BarChart2, CreditCard, DollarSign, Store } from "lucide-react"
 
 export function MetricsOverview() {
