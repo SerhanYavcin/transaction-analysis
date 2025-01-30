@@ -1,5 +1,7 @@
 import {
   Controller,
+  HttpCode,
+  HttpStatus,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -31,6 +33,7 @@ export class UploadController {
   @ApiResponse({
     type: UploadResponseDto,
   })
+  @HttpCode(HttpStatus.OK)
   upload(@UploadedFile() file: File) {
     return this.service.run(file);
   }

@@ -36,7 +36,6 @@ export class UploadResponseDto {
   detected_patterns: PatternResponseDto[];
 
   constructor(data: GeminiResponsePayload[]) {
-    console.log(data);
     const normalized_transactions: AnalyzeMerchantResponseDto[] = data.map(
       (item) => ({
         original: item.original,
