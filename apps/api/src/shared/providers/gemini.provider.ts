@@ -28,7 +28,14 @@ export class GeminiProvider {
           type: SchemaType.ARRAY,
           items: {
             type: SchemaType.OBJECT,
+            nullable: false,
             properties: {
+              original: {
+                type: SchemaType.STRING,
+                description: 'The original transaction data',
+                example: '2025-01-01, Amazon, $100.00',
+                nullable: false,
+              },
               merchant: {
                 type: SchemaType.STRING,
                 description:
@@ -67,11 +74,13 @@ export class GeminiProvider {
                 nullable: false,
               },
               flags: {
+                description:
+                  'The flags of the transaction. These are the flags that are used to classify the transaction into a category or sub-category. For example, if the transaction is an online purchase, the flag would be "online_purchase".',
                 type: SchemaType.ARRAY,
                 nullable: false,
                 items: {
                   type: SchemaType.STRING,
-                  description: 'The flags of the transaction',
+                  nullable: false,
                   example: [
                     'online_purchase',
                     'marketplace',
@@ -80,7 +89,6 @@ export class GeminiProvider {
                     'transportation',
                     'service',
                   ],
-                  nullable: false,
                 },
               },
               frequency: {
@@ -103,6 +111,19 @@ export class GeminiProvider {
                 nullable: true,
               },
             },
+            required: [
+              'original',
+              'merchant',
+              'amount',
+              'category',
+              'sub_category',
+              'confidence',
+              'is_subscription',
+              'flags',
+              'frequency',
+              'notes',
+              'next_expected',
+            ],
           },
         },
       },

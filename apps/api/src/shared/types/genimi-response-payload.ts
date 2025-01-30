@@ -1,6 +1,7 @@
 /**
  * GeminiResponsePayloadDto
  * @description Gemini response payload type for the transaction analytics
+ * @property {string} original - The original transaction data
  * @property {string} merchant - The name of the merchant that the transaction was made to
  * @property {number} amount - The amount of the transaction
  * @property {string} category - The category of the transaction
@@ -14,6 +15,11 @@
  */
 export type GeminiResponsePayload = {
   /**
+   * The original transaction data
+   * @type {string}
+   */
+  original: string;
+  /**
    * The name of the merchant that the transaction was made to
    * @type {string}
    */
@@ -25,6 +31,11 @@ export type GeminiResponsePayload = {
   amount: number;
   /**
    * The category of the transaction
+   * @type {string}
+   */
+  category: string;
+  /**
+   * The sub-category of the transaction
    * @type {string}
    */
   sub_category: string;

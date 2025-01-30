@@ -7,9 +7,12 @@ import {
 import { ApiBody, ApiConsumes, ApiResponse } from '@nestjs/swagger';
 import { FileInterceptor, File } from '@nest-lab/fastify-multer';
 import { UploadResponseDto } from 'src/dtos';
+import { UploadService } from 'src/services';
 
 @Controller('upload')
 export class UploadController {
+  constructor(private readonly service: UploadService) {}
+
   @Post()
   @UseInterceptors(FileInterceptor('file'))
   @ApiConsumes('multipart/form-data')
@@ -29,7 +32,6 @@ export class UploadController {
     type: UploadResponseDto,
   })
   upload(@UploadedFile() file: File) {
-    console.log(file);
-    return;
+    return this.service.run(file);
   }
 }
