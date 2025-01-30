@@ -1,4 +1,18 @@
 {
+  "trailingComma": "all",
   "singleQuote": true,
-  "trailingComma": "all"
+  "printWidth": 80,
+  "useTabs": false,
+  "tabWidth": 2,
+  "arrowParens": "always",
+  "endOfLine": "auto",
+  "proseWrap": "always",
+  "overrides": [
+    {
+      "files": ".prettierrc",
+      "options": {
+        "printWidth": 1e5
+      }
+    }
+  ]
 }
