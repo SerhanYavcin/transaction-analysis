@@ -1,6 +1,7 @@
 import { Type } from 'class-transformer';
 import { NormalizedResponseDto } from './normalized-response.dto';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { GeminiResponsePayload } from 'src/shared/types';
 
 /**
  * Analyze Merchant Response DTO
@@ -30,4 +31,17 @@ export class AnalyzeMerchantResponseDto {
     description: 'The original merchant name',
   })
   original?: string;
+
+  constructor(data: GeminiResponsePayload[]) {
+    const normalized: NormalizedResponseDto[] = data.map((item) => ({
+      merchant: item.merchant,
+      category: item.category,
+      sub_category: item.sub_category,
+      confidence: item.confidence,
+      is_subscription: item.is_subscription,
+      flags: item.flags,
+    }));
+
+    this.normalized = normalized[0];
+  }
 }

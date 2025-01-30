@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsObject } from 'class-validator';
+import { IsNotEmpty, IsArray } from 'class-validator';
 import { TransactionRequestDto } from './transaction-request.dto';
 import { ApiProperty } from '@nestjs/swagger';
 
@@ -19,8 +19,6 @@ export class AnalyzePatternRequestDto {
     description: 'The transaction to analyze',
   })
   @IsNotEmpty()
-  @IsObject({
-    message: 'Patterns must be an object',
-  })
+  @IsArray()
   transactions: TransactionRequestDto[];
 }
